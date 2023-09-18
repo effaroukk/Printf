@@ -3,12 +3,12 @@
  * handle_print - Prints an argument based on the argument type
  * @fmt: The printed arguments are printed in this formatted string
  * @list: the arguments list to be prented
- * @ind: ind.
- * @buffer: The print is handled by this buffer array.
  * @flags: This calculates the active flags
  * @width: This gets width.
  * @precision: This specifies the precision
  * @size: This specifies the size
+ * @ind: ind.
+ * @buffer: The print is handled by this buffer array.
  * Return: 1 or 2;
  */
 int handle_print(const char *fmt, int *ind, va_list list, char buffer[],

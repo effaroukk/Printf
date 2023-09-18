@@ -1,4 +1,3 @@
-
 #include "main.h"
 
 /************************* PRINT UNSIGNED NUMBER *************************/
@@ -16,14 +15,16 @@ int print_unsigned(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int z = size - 2;
+
+
 	unsigned long int num = va_arg(types, unsigned long int);
 
 	num = convert_size_unsgnd(num, size);
 
 	if (num == 0)
 		buffer[z--] = '0';
-
 	buffer[size - 1] = '\0';
+
 
 	while (num > 0)
 	{
@@ -50,8 +51,8 @@ int print_unsigned(va_list types, char buffer[],
 int print_octal(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
-
 	int j = size - 2;
+
 	unsigned long int num = va_arg(types, unsigned long int);
 	unsigned long int init_num = num;
 
@@ -63,6 +64,7 @@ int print_octal(va_list types, char buffer[],
 		buffer[j--] = '0';
 
 	buffer[size - 1] = '\0';
+
 
 	while (num > 0)
 	{
@@ -131,7 +133,8 @@ int print_hexa_upper(va_list types, char buffer[],
 int print_hexa(va_list types, char map_to[], char buffer[],
 	int flags, char flag_ch, int width, int precision, int size)
 {
-	int k = size - 2;
+	int j = size - 2;
+
 	unsigned long int num = va_arg(types, unsigned long int);
 	unsigned long int init_num = num;
 
@@ -140,23 +143,23 @@ int print_hexa(va_list types, char map_to[], char buffer[],
 	num = convert_size_unsgnd(num, size);
 
 	if (num == 0)
-		buffer[k--] = '0';
+		buffer[j--] = '0';
+
 
 	buffer[size - 1] = '\0';
 
 	while (num > 0)
 	{
-		buffer[k--] = map_to[num % 16];
+		buffer[j--] = map_to[num % 16];
 		num /= 16;
 	}
 
 	if (flags & F_HASH && init_num != 0)
 	{
-		buffer[k--] = flag_ch;
-		buffer[k--] = '0';
+		buffer[j--] = flag_ch;
+		buffer[j--] = '0';
 	}
 
-	k++;
-
-	return (write_unsgnd(0, k, buffer, flags, width, precision, size));
+	j++;
+	return (write_unsgnd(0, j, buffer, flags, width, precision, size));
 }

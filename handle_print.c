@@ -14,7 +14,7 @@
 int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int j, unknown_length = 0, printed_characters = -1;
+	int z, unknow_len = 0, printed_chars = -1;
 	fmt_t fmt_types[] = {
 		{'c', print_char}, {'s', print_string}, {'%', print_percent},
 		{'i', print_int}, {'d', print_int}, {'b', print_binary},
@@ -22,17 +22,17 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 		{'X', print_hexa_upper}, {'p', print_pointer}, {'S', print_non_printable},
 		{'r', print_reverse}, {'R', print_rot13string}, {'\0', NULL}
 	};
-	for (j = 0; fmt_types[j].fmt != '\0'; j++)
-		if (fmt[*ind] == fmt_types[j].fmt)
-			return (fmt_types[j].fn(list, buffer, flags, width, precision, size));
+	for (z = 0; fmt_types[z].fmt != '\0'; z++)
+		if (fmt[*ind] == fmt_types[z].fmt)
+			return (fmt_types[z].fn(list, buffer, flags, width, precision, size));
 
-	if (fmt_types[j].fmt == '\0')
+	if (fmt_types[z].fmt == '\0')
 	{
 		if (fmt[*ind] == '\0')
 			return (-1);
-		unknown_length += write(1, "%%", 1);
+		unknow_len += write(1, "%%", 1);
 		if (fmt[*ind - 1] == ' ')
-			unknown_length += write(1, " ", 1);
+			unknow_len += write(1, " ", 1);
 		else if (width)
 		{
 			--(*ind);
@@ -42,8 +42,8 @@ int handle_print(const char *fmt, int *ind, va_list list, char buffer[],
 				--(*ind);
 			return (1);
 		}
-		unknown_length += write(1, &fmt[*ind], 1);
-		return (unknown_length);
+		unknow_len += write(1, &fmt[*ind], 1);
+		return (unknow_len);
 	}
-	return (printed_characters);
+	return (printed_chars);
 }

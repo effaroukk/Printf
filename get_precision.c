@@ -5,7 +5,7 @@
  * @format: Formatting string arguments
  * @list: list of arguments.
  * @curr_k: List of arguments to be printed.
- *
+ * @k: variable
  * Return: Precision.
  */
 int get_precision(const char *format, int *k, va_list list)

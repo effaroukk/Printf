@@ -4,13 +4,13 @@
  * get_precision - Calculating the printing precision
  * @format: Formatting string arguments
  * @list: list of arguments.
- * @k: List of arguments to be printed.
+ * @curr_k: List of arguments to be printed.
  *
  * Return: Precision.
  */
 int get_precision(const char *format, int *k, va_list list)
 {
-	int curr_i = *k + 1;
+	int curr_k = *k + 1;
 	int precision = -1;
 
 	if (format[curr_k] != '.')

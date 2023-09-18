@@ -1,35 +1,33 @@
-
 #include "main.h"
 
 /**
- * get_flags - Calculates active flags
- * @format: The printed arguments are printed in this formatted string
- * @i: The taken parameter.
- * Return: Flags:
+ * get_flags - Calculating the active flags
+ * @format: Formatted string of arguments
+ * @q: a parameter taken
+ * Return: Flags
  */
-int get_flags(const char *format, int *i)
+int get_flags(const char *format, int *q)
 {
-	/* - + 0 # ' ' */
-	/* 1 2 4 8  16 */
-	int j, current_i;
+	int w, curr_q;
 	int flags = 0;
-	const char flags_ch[] = {'-', '+', '0', '#', ' ', '\0'};
-	const int flags_array[] = {F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0};
+	const char FLAGS_CH[] = {'-', '+', '0', '#', ' ', '\0'};
+	const int FLAGS_ARR[] = {F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0};
 
-	for (current_i = *i + 1; format[current_i] != '\0'; current_i++)
+	for (curr_q = *q + 1; format[curr_q] != '\0'; curr_q++)
 	{
-		for (j = 0; flags_ch[j] != '\0'; j++)
-			if (format[current_i] == flags_ch[j])
+		for (w = 0; FLAGS_CH[w] != '\0'; w++)
+			if (format[curr_q] == FLAGS_CH[w])
 			{
-				flags |= flags_array[j];
+				flags |= FLAGS_ARR[w];
 				break;
 			}
 
-		if (flags_ch[j] == 0)
+		if (FLAGS_CH[w] == 0)
 			break;
 	}
 
-	*i = current_i - 1;
+	*q = curr_q - 1;
 
 	return (flags);
 }
+

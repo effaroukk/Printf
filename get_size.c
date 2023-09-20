@@ -8,8 +8,7 @@
  */
 int get_size(const char *format, int *z)
 {
-	int sizee = 0;
-	int curr_z = *z + 1;
+	int sizee = 0, curr_z = *z + 1;
 
 	if (format[curr_z] == 'l')
 		sizee = S_LONG;

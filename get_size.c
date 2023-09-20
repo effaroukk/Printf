@@ -11,9 +11,9 @@ int get_size(const char *format, int *z)
 	int sizee = 0, ef_z = *z + 1;
 
 	if (format[ef_z] == 'l')
-		sizee = S_LONG;
+		sizee = S_ONG;
 	else if (format[ef_z] == 'h')
-		sizee = S_SHORT;
+		sizee = S_ORT;
 
 	if (sizee == 0)
 		*z = ef_z - 1;

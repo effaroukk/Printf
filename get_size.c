@@ -4,22 +4,22 @@
  * get_size - Calculating  argument size
  * @format: Formatted string of arguments
  * @z: List of arg
- * Return: size
+ * Return: sizee
  */
 int get_size(const char *format, int *z)
 {
-	int size = 0;
+	int sizee = 0;
 	int curr_z = *z + 1;
 
 	if (format[curr_z] == 'l')
-		size = S_LONG;
+		sizee = S_LONG;
 	else if (format[curr_z] == 'h')
-		size = S_SHORT;
+		sizee = S_SHORT;
 
-	if (size == 0)
+	if (sizee == 0)
 		*z = curr_z - 1;
 	else
 		*z = curr_z;
 
-	return (size);
+	return (sizee);
 }

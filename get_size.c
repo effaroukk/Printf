@@ -2,8 +2,8 @@
 
 /**
  * get_size - Calculating  argument size
- * @format: Formatted string of arguments
- * @z: List of arg
+ * @format: arguments of formatted string
+ * @z: arg list
  * Return: sizee
  */
 int get_size(const char *format, int *z)

@@ -8,17 +8,17 @@
  */
 int get_size(const char *format, int *z)
 {
-	int sizee = 0, curr_z = *z + 1;
+	int sizee = 0, curl_z = *z + 1;
 
-	if (format[curr_z] == 'l')
+	if (format[curl_z] == 'l')
 		sizee = S_LONG;
-	else if (format[curr_z] == 'h')
+	else if (format[curl_z] == 'h')
 		sizee = S_SHORT;
 
 	if (sizee == 0)
-		*z = curr_z - 1;
+		*z = curl_z - 1;
 	else
-		*z = curr_z;
+		*z = curl_z;
 
 	return (sizee);
 }

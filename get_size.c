@@ -1,24 +1,27 @@
 #include "main.h"
 
 /**
- * get_size - Calculating  argument size
- * @format: arguments of formatted string
- * @z: arg list
- * Return: sizee
+ * get_size - Calculate size modifier for the next format specifier
+ * @format: The format string
+ * @position: Pointer to the current position in the format string
+ *
+ * Return: Size modifier (0 for none, 'l' for long, 'h' for short)
  */
-int get_size(const char *format, int *z)
+int get_size(const char *format, size_t *position)
 {
-	int sizee = 0, ef_z = *z + 1;
+	int size_modifier = 0;
 
-	if (format[ef_z] == 'l')
-		sizee = S_ONG;
-	else if (format[ef_z] == 'h')
-		sizee = S_ORT;
+	if (format[*position] == 'l')
+	{
+		size_modifier = 'l';
+		(*position)++;
+	}
+	else if (format[*position] == 'h')
+	{
+		size_modifier = 'h';
+		(*position)++;
+	}
 
-	if (sizee == 0)
-		*z = ef_z - 1;
-	else
-		*z = ef_z;
-
-	return (sizee);
+	return (size_modifier);
 }
+
